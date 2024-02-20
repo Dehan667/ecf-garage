@@ -1,0 +1,60 @@
+<?php
+namespace App\Service;
+
+use App\Entity\User;
+use App\Entity\UserState;
+use App\Repository\UserRepository;
+use App\Security\EmailVerifier;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mime\Address;
+
+class UserService
+{
+    private EntityManagerInterface $entityManager;
+    private EmailVerifier $emailVerifier;
+    private UserRepository $userRepository;
+
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        EmailVerifier $emailVerifier,
+        UserRepository $userRepository
+    ) {
+        $this->entityManager = $entityManager;
+        $this->emailVerifier = $emailVerifier;
+        $this->userRepository = $userRepository;
+    }
+
+    public function askResetPwd(User $user): UserState
+    {
+        $state = $this->userRepository->checkUserValidation($user);
+        if (UserState::SUCCESS === $state->getState()) {
+            $resetDate = date('Y-m-d H:i:s');
+            $user->setIsVerified(false);
+            $user->setResetDate($resetDate);
+            $user->setResetDateHashed(md5($resetDate));
+
+            $this->emailVerifier->sendEmailResetPwd('app_reset_pwd', $user,
+                (new TemplatedEmail())
+                    ->from(new Address('ne-pas-repondre@somme.fr', 'CD80'))
+                    ->to($user->getEmail())
+                    ->subject('Réinitialisation de mot de passe')
+                    ->htmlTemplate('registration/reset_pwd_email.html.twig')
+            );
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+        }
+
+        return $state;
+    }
+
+    public function validResetPwd(User $user): bool
+    {
+        $actualTime = new \DateTime('now');
+        $TimeTest = new \DateTime($user->getResetDate());
+        $diff = $TimeTest->diff($actualTime);
+
+        return $diff->days < 1;
+    }
+}
