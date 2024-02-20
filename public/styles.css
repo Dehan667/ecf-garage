@@ -1,0 +1,288 @@
+@import url("accueil.css");
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/**************************** NAVBAR ***************************************/
+#topNav {
+    height: 8vh;
+    padding-right: 2%;
+    background-color: #fff;
+}
+
+#topNav .nav-wrapper {
+    width: 100%;
+}
+
+#topNav a.brand-logo {
+    height: 0;
+    width: 20%;
+}
+
+#topNav div.logo-container {
+    height: 8vh;
+    width: 8vh;   
+    padding: 0.3em;
+}
+
+#topNav ul {
+    width: 80%;
+    display: flex;
+    justify-content: end;
+}
+
+#topNav ul li {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+#topNav li a {
+    line-height: 8vh;
+    color: black !important;
+}
+
+#topNav li a:hover {
+    line-height: 8vh;
+    color: white !important;
+    background-color: rgba(8, 25, 43, 0.75) !important;
+}
+
+#topNav .profil-container {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #08192b;
+}
+
+#topNav .picture-container {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+#topNav .picture-container > img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+#topNav .details {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+
+#topNav .icon-container {
+    border-radius: 50%;
+    background-color: #08192b;    
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+#topNav .icon-container .icon {
+    width: 50%;
+    margin: 0 auto;
+}
+
+hr.solidBar {
+    border: 3px solid #AD2238;
+    margin: 0;
+}
+center.flashes{
+    position: right,absolute;
+    
+}
+
+/**************************** MAIN ***************************************/
+main {
+    display: flex;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+/**************************** ASIDE ***************************************/
+aside {
+    width: 15%;
+    background-color: #08192b !important;
+    margin: 0;
+    padding-top: 4rem;
+    overflow-y: auto;
+    position: flex;
+    top: 8vh + 3px;
+    left: 0;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside li {
+    margin-bottom: 30px;
+}
+
+aside li a {
+    display: block;
+    padding: 10px;
+    color: white !important;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.active {
+    color: red !important;
+}
+
+aside li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-form {
+    margin: 0 auto;
+    width: 60%;
+}
+
+.custom-form label {
+    color: black;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.custom-form button {
+    background-color: #4CAF50;
+    color: #fff; 
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease; 
+    opacity: 1; 
+    text-align: center;
+    width: 80%;
+}
+
+.custom-form:hover button {
+    background-color: rgba(157, 238, 187, 0.7);  
+    opacity: 1;
+}
+
+.blankicon {
+    border-radius: 80%;
+    background-color: #fafcff;    
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.fade-in-out {
+    animation: fade-in 3s, fade-out 3s 3s; 
+    border-radius: 0;
+    font-size: 1.5em;
+    margin-top: 3rem;
+    opacity: 0; 
+    text-align: center;
+    width: 20%;
+}
+
+.button-2 
+{
+      align-items: center;
+      background-color: rgba(240, 240, 240, 0.26);
+      border: 1px solid #DFDFDF;
+      border-radius: 16px;
+      box-sizing: border-box;
+      color: #000000;
+      cursor: pointer;
+      display: flex;
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      justify-content: center;
+      line-height: 28px;
+      max-width: 100%;
+      padding: 14px 22px;
+      text-decoration: none;
+      transition: all .2s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: 100%;
+    }
+    
+    .button-2:active,
+    .button-2:hover {
+      outline: 0;
+    }
+    
+    .button-2:hover {
+      background-color: #FFFFFF;
+      border-color: rgba(0, 0, 0, 0.19);
+    }
+    
+    @media (min-width: 768px) {
+      .button-2 {
+        font-size: 20px;
+        min-width: 200px;
+        padding: 14px 16px;
+      }
+}
+
+.div-centre{
+    border-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/**************************** REGISTER FORM ***************************************/
+#registration_form_agreeTerms{
+    opacity: 1;
+    position: relative;
+    left: auto;
+    margin: 0 3%;
+}
+
+
+/**************************** SEARCH BARRE ***************************************/
+.searchContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.searchContainer input {
+    width: 20%;
+}
