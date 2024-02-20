@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des agents {% endblock %}
+{% block body %}
+    <h3 class"text-center"> Liste des agents </h3>
+
+<div class="row">
+    <div class="col s2"></div>
+    <div class="col s8">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Service</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th></th>
+            </thead>
+            <tbody>
+                {% for agent in agents %}
+                    <tr>
+                        <td>{{ agent.id }}</td>
+                        <td>{{ agent.service }}</td>
+                        <td>{{ agent.nom }}</td>
+                        <td>{{ agent.prenom }}</td>
+                        <td>
+                        <a href="{{ path ('remove_agent', {'id' : agent.id})}}" onclick="return confirm (' Confirmer ? ')">
+                        <button type="button" class="btn btn-danger"> 
+							<i class="bi bi-trash"> </i>
+						</button>
+                        </a>
+
+                        <a href="{{ path ('modify_agent', {'id': agent.id}) }}">
+						<button type="button" class="btn btn-success"> 
+							<i class="bi bi-pencil-square"></i>
+						</button>
+                        </a>
+                        </td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <a href="{{ path ('app_register')}}">
+		<button type="button" class="btn btn-success"> 
+		<i class="bi bi-plus-circle-dotted"> Ajouter Employé </i>
+		</button>
+        </a>
+
+		</div>
+    <div class="col s2"></div>
+		</div>
+{% endblock %}

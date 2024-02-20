@@ -1,0 +1,30 @@
+<nav id="topNav">
+  <span class="navbar-brand mb-0 h1">
+            </span>
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <div class="profil-container">
+                    <div class="details">
+                    {% if app.user %}
+                        <p>{{app.user.email}}</p> 
+                    {% else %}
+                        <a href="{{ path('app_login') }}"> <i class="fa-solid fa-user icon" style="color: #ffffff;"> </i></a>
+                    {% endif %}
+                    </div>
+                <div>
+            </li>
+            {% if app.user %}
+            <li>
+                <div class="icon-container">
+                    <a href="{{ path('modify_agent', {'id': app.user.id}) }}"> <i class="fa-solid fa-gear icon" style="color: #ffffff;"></i></a>
+                <div>
+            </li>
+            <li>
+                <div class="icon-container">
+                    <a href="{{ path('app_logout') }}"><i class="fa-solid fa-door-open icon" style="color: #ffffff;"></i></a>
+                <div>
+            </li>
+            {% endif %}
+        </ul>
+</nav>
